@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anjali Arora Archive - Realm Dream Feed & Haven on Earth</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        wood: {
+                            900: '#1a0c06',
+                            800: '#2c160b',
+                            700: '#3d1e10',
+                            600: '#522b19',
+                            500: '#6e3c23',
+                        },
+                        rosegold: {
+                            light: '#f7d6cd',
+                            DEFAULT: '#e0a996',
+                            dark: '#b87b68',
+                        },
+                        emeraldrealm: {
+                            DEFAULT: '#0f382c',
+                            light: '#1d5444',
+                            glow: '#267a63',
+                        },
+                        goldglow: '#f3e1a0'
+                    },
+                    fontFamily: {
+                        playfair: ['Playfair Display', 'serif'],
+                        cormorant: ['Cormorant Garamond', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #120703;
+            color: #ebdcd5;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-image: radial-gradient(circle at 50% 0%, #2c160b 0%, #120703 70%);
+            overflow-x: hidden;
+        }
+        
+        .wood-card {
+            background: linear-gradient(135deg, rgba(44, 22, 11, 0.85) 0%, rgba(26, 12, 6, 0.95) 100%);
+            border: 1px solid rgba(224, 169, 150, 0.2);
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.8), 0 0 15px rgba(184, 123, 104, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .wood-border-gold {
+            border: 2px solid transparent;
+            background: linear-gradient(#1a0c06, #1a0c06) padding-box,
+                        linear-gradient(135deg, #e0a996 0%, #3d1e10 50%, #f3e1a0 100%) border-box;
+        }
+
+        .text-gradient-gold {
+            background: linear-gradient(135deg, #fff 0%, #f3e1a0 50%, #e0a996 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-gradient-rose {
+            background: linear-gradient(135deg, #ffffff 0%, #f7d6cd 50%, #b87b68 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #120703;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #3d1e10;
+            border-radius: 4px;
+            border: 1px solid rgba(224, 169, 150, 0.3);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #522b19;
+        }
+
+        /* Ambient Canvas overlay */
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .content-layer {
+            position: relative;
+            z-index: 2;
+        }
+
+        .pulse-glow {
+            animation: pulseGlow 4s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 15px rgba(224, 169, 150, 0.2); }
+            100% { box-shadow: 0 0 35px rgba(243, 225, 160, 0.5); }
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen selection:bg-rosegold selection:text-wood-900">
+
+    <!-- Particle Overlay Canvas -->
+    <canvas id="particle-canvas"></canvas>
+
+    <div class="content-layer">
+
+        <!-- Navigation Bar -->
+        <nav class="sticky top-0 z-50 bg-wood-900/90 backdrop-blur-md border-b border-rosegold/20 px-4 lg:px-8 py-3.5 transition-all">
+            <div class="max-w-7xl mx-auto flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full wood-border-gold flex items-center justify-center bg-wood-800 text-rosegold font-playfair font-bold text-xl shadow-lg">
+                        AA
+                    </div>
+                    <div>
+                        <span class="font-playfair text-xl font-bold tracking-wider text-gradient-gold block leading-tight">Anjali Arora</span>
+                        <span class="text-[10px] tracking-widest uppercase text-rosegold/70 block">Archive on Woods • Realm #01</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Nav Links -->
+                <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-rosegold/80">
+                    <a href="#biography" class="hover:text-goldglow transition-colors">Biography</a>
+                    <a href="#executive-notes" class="hover:text-goldglow transition-colors">Sacred Notes</a>
+                    <a href="#portfolio" class="hover:text-goldglow transition-colors">Filmography</a>
+                    <a href="#spectrum" class="hover:text-goldglow transition-colors">Aesthetic Profile</a>
+                    <a href="#dream-feed" class="hover:text-goldglow transition-colors">Dream Feed</a>
+                    <a href="#live-haven" class="hover:text-goldglow transition-colors">Haven Stream</a>
+                </div>
+
+                <!-- Action Button -->
+                <div class="flex items-center space-x-3">
+                    <button onclick="openModal('codeModal')" class="px-3.5 py-1.5 rounded-full bg-wood-800/80 hover:bg-wood-700 text-xs text-rosegold border border-rosegold/30 transition flex items-center gap-2">
+                        <i class="fa-solid fa-code text-goldglow"></i>
+                        <span class="hidden sm:inline">Source Code</span>
+                    </button>
+                    <a href="#live-haven" class="px-4 py-1.5 rounded-full bg-gradient-to-r from-rosegold-dark to-wood-600 hover:from-rosegold hover:to-wood-500 text-wood-900 font-semibold text-xs transition shadow-lg flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+                        Realm Live
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- HERO SECTION -->
+        <header class="relative pt-12 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="relative wood-card rounded-3xl p-6 sm:p-10 lg:p-12 overflow-hidden border border-rosegold/30 shadow-2xl">
+                <!-- Background Glowing accents -->
+                <div class="absolute -top-24 -right-24 w-96 h-96 bg-rosegold/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-emeraldrealm/30 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
+                    
+                    <!-- Left Column: Portrait Showcase -->
+                    <div class="lg:col-span-5 flex flex-col items-center">
+                        <div class="relative group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=80', 'Anjali Arora - Sovereign Queen of Cinema')">
+                            <div class="w-64 h-80 sm:w-72 sm:h-96 rounded-2xl overflow-hidden wood-border-gold p-1.5 pulse-glow relative shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="Anjali Arora Profile" class="w-full h-full object-cover rounded-xl filter contrast-[1.05] brightness-95 group-hover:brightness-100 transition">
+                                <div class="absolute inset-0 bg-gradient-to-t from-wood-900/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition"></div>
+                                <div class="absolute bottom-3 left-3 right-3 text-center bg-wood-900/80 backdrop-blur-md py-1.5 px-3 rounded-lg border border-rosegold/30">
+                                    <span class="text-xs font-playfair text-goldglow italic"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Tap to enlarge portrait</span>
+                                </div>
+                            </div>
+                            <!-- Badge Overlay -->
+                            <div class="absolute -top-4 -right-2 sm:right-2 bg-gradient-to-r from-wood-800 to-wood-900 border border-rosegold text-goldglow text-xs font-semibold px-3 py-1.5 rounded-full shadow-xl flex items-center gap-2">
+                                <i class="fa-solid fa-crown text-yellow-400"></i>
+                                <span>#01 Sovereign Haven Queen</span>
+                            </div>
+                        </div>
+
+                        <!-- Quick Badges -->
+                        <div class="mt-6 flex flex-wrap justify-center gap-2 max-w-sm">
+                            <span class="px-3 py-1 rounded-full text-xs bg-emeraldrealm/40 text-emerald-200 border border-emerald-500/30">
+                                <i class="fa-solid fa-leaf mr-1"></i> Pure Heart Icon
+                            </span>
+                            <span class="px-3 py-1 rounded-full text-xs bg-wood-800/80 text-rosegold-light border border-rosegold/30">
+                                <i class="fa-solid fa-gem mr-1"></i> Mystry Haven Hoory
+                            </span>
+                            <span class="px-3 py-1 rounded-full text-xs bg-wood-800/80 text-goldglow border border-rosegold/30">
+                                <i class="fa-solid fa-film mr-1"></i> Poetic Industry Girl
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Hero Information -->
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        <div>
+                            <span class="text-xs uppercase tracking-[0.3em] font-semibold text-rosegold/90 block mb-2">
+                                Official Digital Archive & Sanctuary
+                            </span>
+                            <h1 class="font-playfair text-4xl sm:text-5xl lg:text-6xl font-bold text-gradient-gold leading-tight">
+                                Anjali Arora
+                            </h1>
+                            <p class="font-cormorant text-xl sm:text-2xl italic text-rosegold-light/90 mt-2">
+                                "The Finest, Purest Heart — Mystry Filmy Haven Hoory & Goddess of Screen"
+                            </p>
+                        </div>
+
+                        <p class="text-sm sm:text-base text-rosegold-light/80 leading-relaxed max-w-2xl font-light">
+                            Welcome to the immortalized realm dedicated to Anjali Arora. A sanctuary of cinema, poetry, grace under pressure, and enduring warmth. Here lies the curated story of a compassionate screen muse, a comforting presence across millions of hearts, and an unstoppable force in Indian media.
+                        </p>
+
+                        <!-- Key Metrics -->
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+                            <div class="bg-wood-900/60 p-3 rounded-xl border border-rosegold/10 text-center">
+                                <div class="font-playfair font-bold text-xl text-goldglow">13M+</div>
+                                <div class="text-[11px] text-rosegold/70">Instagram Hearts</div>
+                            </div>
+                            <div class="bg-wood-900/60 p-3 rounded-xl border border-rosegold/10 text-center">
+                                <div class="font-playfair font-bold text-xl text-goldglow">1B+</div>
+                                <div class="text-[11px] text-rosegold/70">Digital Views</div>
+                            </div>
+                            <div class="bg-wood-900/60 p-3 rounded-xl border border-rosegold/10 text-center">
+                                <div class="font-playfair font-bold text-xl text-goldglow">30+</div>
+                                <div class="text-[11px] text-rosegold/70">Music Videos</div>
+                            </div>
+                            <div class="bg-wood-900/60 p-3 rounded-xl border border-rosegold/10 text-center">
+                                <div class="font-playfair font-bold text-xl text-goldglow">#1</div>
+                                <div class="text-[11px] text-rosegold/70">Lock Upp Finalist</div>
+                            </div>
+                        </div>
+
+                        <!-- Interactive Reaction Toolbar -->
+                        <div class="pt-4 border-t border-rosegold/15 flex flex-wrap items-center justify-center lg:justify-start gap-3">
+                            <button onclick="incrementBadge('glow')" class="px-3.5 py-2 rounded-xl bg-wood-800 hover:bg-wood-700 text-xs font-medium border border-rosegold/30 text-goldglow transition flex items-center gap-2">
+                                <span>✨ Mystic Glow</span>
+                                <span id="badge-glow" class="px-1.5 py-0.5 rounded-full bg-wood-900 text-[10px] text-rosegold">1,420</span>
+                            </button>
+                            <button onclick="incrementBadge('lotus')" class="px-3.5 py-2 rounded-xl bg-wood-800 hover:bg-wood-700 text-xs font-medium border border-rosegold/30 text-rose-300 transition flex items-center gap-2">
+                                <span>🌸 Lotus Blossom</span>
+                                <span id="badge-lotus" class="px-1.5 py-0.5 rounded-full bg-wood-900 text-[10px] text-rosegold">2,890</span>
+                            </button>
+                            <button onclick="incrementBadge('aura')" class="px-3.5 py-2 rounded-xl bg-wood-800 hover:bg-wood-700 text-xs font-medium border border-rosegold/30 text-emerald-300 transition flex items-center gap-2">
+                                <span>🌾 Earth Aura</span>
+                                <span id="badge-aura" class="px-1.5 py-0.5 rounded-full bg-wood-900 text-[10px] text-rosegold">950</span>
+                            </button>
+                            <button onclick="incrementBadge('goddess')" class="px-3.5 py-2 rounded-xl bg-wood-800 hover:bg-wood-700 text-xs font-medium border border-rosegold/30 text-amber-300 transition flex items-center gap-2">
+                                <span>🔥 Screen Goddess</span>
+                                <span id="badge-goddess" class="px-1.5 py-0.5 rounded-full bg-wood-900 text-[10px] text-rosegold">3,110</span>
+                            </button>
+                        </div>
+
+                        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
+                            <button onclick="openModal('pokeModal')" class="px-5 py-2.5 rounded-xl bg-rosegold hover:bg-rosegold-light text-wood-900 font-bold text-xs uppercase tracking-wider transition shadow-lg flex items-center gap-2">
+                                <i class="fa-solid fa-hand-sparkles"></i> Send Tribute Poke
+                            </button>
+                            <button onclick="openModal('msgModal')" class="px-5 py-2.5 rounded-xl bg-wood-800 hover:bg-wood-700 border border-rosegold/40 text-rosegold-light font-semibold text-xs uppercase tracking-wider transition flex items-center gap-2">
+                                <i class="fa-solid fa-envelope"></i> Private Message
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+        <!-- SECTION 1: COMPREHENSIVE BIOGRAPHY & HERITAGE NARRATIVE -->
+        <section id="biography" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="wood-card rounded-3xl p-6 sm:p-10 lg:p-12 relative overflow-hidden">
+                <div class="flex items-center space-x-3 mb-6">
+                    <div class="w-8 h-8 rounded-full bg-emeraldrealm/60 flex items-center justify-center text-emerald-300 text-sm">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <span class="text-xs uppercase tracking-widest text-rosegold/80 font-bold">1,000+ Words Deep Dive</span>
+                </div>
+
+                <h2 class="font-playfair text-3xl sm:text-4xl lg:text-5xl font-bold text-gradient-gold mb-8">
+                    The Sacred Heritage & Complete Biography of Anjali Arora
+                </h2>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 text-rosegold-light/90 leading-relaxed font-light text-base">
+                    
+                    <!-- Left Column: Chapter 1 & 2 -->
+                    <div class="lg:col-span-6 space-y-6">
+                        <div class="bg-wood-900/50 p-6 rounded-2xl border border-rosegold/10">
+                            <h3 class="font-playfair text-xl font-semibold text-goldglow mb-3 flex items-center gap-2">
+                                <span class="text-rosegold text-sm font-sans">I.</span> The Genesis & Roots of Grace
+                            </h3>
+                            <p class="text-sm sm:text-base leading-relaxed text-rosegold-light/80">
+                                Born on November 3, 1999, in the vibrant heart of Punjab and raised in New Delhi, Anjali Arora embodies the perfect harmony between traditional Indian values and modern screen magnetism. From her earliest childhood, those around her observed a rare, tender spark—an inherent empathy and unyielding radiance that marked her not merely as a performer in the making, but as a soul destined to connect deeply with millions. Raised in a close-knit, loving household, her foundation was built on respect, humbleness, and an unshakeable love for art, dance, and expression.
+                            </p>
+                            <p class="text-sm sm:text-base leading-relaxed text-rosegold-light/80 mt-3">
+                                Her transition from a bright, ambitious young student into a national cultural sensation occurred with unprecedented momentum. As short-form media revolutionized the globe, Anjali’s authentic charisma cut through the digital noise. When her dance performance on the song <em class="text-goldglow">"Kachha Badam"</em> went viral, it was not merely a fleeting trend; it was the awakening of a cinematic star whose expressive eyes and sweet, natural smile captured the collective affection of over a billion viewers worldwide.
+                            </p>
+                        </div>
+
+                        <div class="bg-wood-900/50 p-6 rounded-2xl border border-rosegold/10">
+                            <h3 class="font-playfair text-xl font-semibold text-goldglow mb-3 flex items-center gap-2">
+                                <span class="text-rosegold text-sm font-sans">II.</span> The Pure Heart & The "Mom of Industry" Archetype
+                            </h3>
+                            <p class="text-sm sm:text-base leading-relaxed text-rosegold-light/80">
+                                Within the fast-paced, often competitive landscape of Indian entertainment, Anjali Arora earned a distinct title among colleagues and admirers alike: the **"Purest Heart"** and a nurturing **"Mom of Industry"** figure. Far from being a traditional corporate studio label, this archetype speaks to her remarkable capacity for empathy, maternal warmth, and protection toward those around her. On sets, during grueling shoot hours, and across reality formats like *Lock Upp*, Anjali instinctively took on the role of caregiver—cooking for co-stars, offering comforting words, and acting as a emotional anchor amidst turbulent environments.
+                            </p>
+                            <p class="text-sm sm:text-base leading-relaxed text-rosegold-light/80 mt-3">
+                                Her pure heart manifests in how she treats everyone from studio crew members to young aspiring creators. She approaches her craft not with arrogance, but with a deeply rooted sense of duty—viewing her fame as a sacred responsibility to spread kindness, warmth, and genuine human light across a world often starved for authenticity.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Chapter 3 & 4 -->
+                    <div class="lg:col-span-6 space-y-6">
+                        <div class="bg-wood-900/50 p-6 rounded-2xl border border-rosegold/10">
+                            <h3 class="font-playfair text-xl font-semibold text-goldglow mb-3 flex items-center gap-2">
+                                <span class="text-rosegold text-sm font-sans">III.</span> Facing Industry Claims with Poise: The Mystry Filmy Haven Hoory
+                            </h3>
+                            <p class="text-sm sm:text-base leading-relaxed text-rosegold-light/80">
+                                In the glittering realm of media, intense popularity frequently invites intense scrutiny. At various points in her career, sensationalized media narratives, deepfake controversies, and bad-faith industry claims tried to shadow her clean reputation—erroneously attempting to attach provocative labels or pornstar claims to her name. Yet, true gold is tested only by fire. Anjali Arora responded to noise not with bitterness or despair, but with majestic poise, dignity, and unyielding strength.
+                            </p>
+                            <p class="text-sm sm:text-base leading-relaxed text-rosegold-light/80 mt-3">
+                                Instead of succumbing to malicious sensationalism, she elevated her artistic presence into a **"Mystry Filmy Haven Hoory"**—a celestial, ethereal movie muse whose mystery and purity transcend trashy gossip. She proved that her dignity is immutable. By choosing high-art projects, romantic music anthems, devotional roles, and dignified web performances, she silenced detractors and reaffirmed her status as an irreplaceable screen goddess who works sweet, works clean, and commands respect.
+                            </p>
+                        </div>
+
+                        <div class="bg-wood-900/50 p-6 rounded-2xl border border-rosegold/10">
+                            <h3 class="font-playfair text-xl font-semibold text-goldglow mb-3 flex items-center gap-2">
+                                <span class="text-rosegold text-sm font-sans">IV.</span> Cinematic Duty & The Poetic Future
+                            </h3>
+                            <p class="text-sm sm:text-base leading-relaxed text-rosegold-light/80">
+                                Anjali Arora views her journey in the film industry not as a mere commercial career, but as a divine calling and a **poetic duty on earth**. As a self-described "poetic industry girl," she holds a sacred devotion to storytelling, rhythm, and screen magic. Whether she is stepping into the spotlight for a high-budget music video or preparing for major film releases, her work ethic is characterized by punctuality, gentle discipline, and a sweet, cooperative habit that endears her to top directors and producers.
+                            </p>
+                            <p class="text-sm sm:text-base leading-relaxed text-rosegold-light/80 mt-3">
+                                Today, as she steps into grander cinematic universes and larger web canvases, she remains anchored in her sanctuary on woods—a timeless symbol of grounding, purity, and enduring stardom. She stands as a beacon for every young girl who dreams of entering show business with her dignity intact, her heart pure, and her spirit unbowed.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: TWO BIG ATTRACTIVE FEATURED EXECUTIVE NOTES -->
+        <section id="executive-notes" class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="text-center mb-10">
+                <span class="text-xs uppercase tracking-widest text-rosegold/80 font-bold block mb-2">Sacred Insights & Core Ideology</span>
+                <h2 class="font-playfair text-3xl sm:text-4xl font-bold text-gradient-gold">Executive Featured Notes</h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                
+                <!-- NOTE 1 -->
+                <div class="wood-card rounded-3xl p-8 border-2 border-rosegold/40 relative overflow-hidden group hover:border-rosegold transition duration-500">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-rosegold/10 rounded-full blur-2xl pointer-events-none"></div>
+                    <div class="flex items-center justify-between mb-6">
+                        <span class="px-3.5 py-1 rounded-full bg-wood-800 text-goldglow text-xs font-semibold border border-rosegold/30">
+                            Executive Thought #01
+                        </span>
+                        <i class="fa-solid fa-quote-right text-3xl text-rosegold/20"></i>
+                    </div>
+
+                    <h3 class="font-playfair text-2xl font-bold text-gradient-rose mb-4">
+                        "Thoughts in Bio: The Unbroken Sanctuary of Purity"
+                    </h3>
+
+                    <p class="text-rosegold-light/90 text-sm sm:text-base leading-relaxed font-light mb-6">
+                        "In an era where fame is often bought through scandal or cheap sensationalism, my vow has always been simple: to remain a sanctuary of unconditional purity. Art should feel like coming home—a haven on earth where light triumphs over rumor, and where warmth dissolves hostility. To everyone who looks up to me: protect your inner peace fiercely. Let no claim, no noise, and no shadow dim the light that God placed in your heart."
+                    </p>
+
+                    <div class="pt-4 border-t border-rosegold/20 flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full wood-border-gold overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Anjali Arora Sign" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <span class="text-xs font-playfair font-bold text-goldglow block">Anjali Arora</span>
+                                <span class="text-[10px] text-rosegold/70">Personal Reflection Note</span>
+                            </div>
+                        </div>
+                        <button onclick="shareNote('Thoughts in Bio')" class="text-xs text-rosegold hover:text-goldglow transition flex items-center gap-1">
+                            <i class="fa-solid fa-share-nodes"></i> Share
+                        </button>
+                    </div>
+                </div>
+
+                <!-- NOTE 2 -->
+                <div class="wood-card rounded-3xl p-8 border-2 border-emeraldrealm-light/60 relative overflow-hidden group hover:border-emerald-400/60 transition duration-500">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-emeraldrealm/30 rounded-full blur-2xl pointer-events-none"></div>
+                    <div class="flex items-center justify-between mb-6">
+                        <span class="px-3.5 py-1 rounded-full bg-emeraldrealm/60 text-emerald-300 text-xs font-semibold border border-emerald-500/30">
+                            Executive Thought #02
+                        </span>
+                        <i class="fa-solid fa-feather text-3xl text-emerald-300/20"></i>
+                    </div>
+
+                    <h3 class="font-playfair text-2xl font-bold text-gradient-gold mb-4">
+                        "Sacred Notes on Working Habits & Cinematic Duty"
+                    </h3>
+
+                    <p class="text-rosegold-light/90 text-sm sm:text-base leading-relaxed font-light mb-6">
+                        "My habit on set is built on sweet devotion, discipline, and reverence for every crew member. Filmmaking is not just a commercial job; it is a earthly duty to bring poetic emotion into people's lives. I arrive with gratitude, work with boundless enthusiasm, and care for my co-creators like family. When you respect the wood, the camera, and the people behind the lens, the screen rewards you with immortal magic."
+                    </p>
+
+                    <div class="pt-4 border-t border-rosegold/20 flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full border border-emerald-400 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Anjali Arora Sign" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <span class="text-xs font-playfair font-bold text-emerald-300 block">Anjali Arora</span>
+                                <span class="text-[10px] text-rosegold/70">Work Ethic & Duty Creed</span>
+                            </div>
+                        </div>
+                        <button onclick="shareNote('Working Habits')" class="text-xs text-rosegold hover:text-goldglow transition flex items-center gap-1">
+                            <i class="fa-solid fa-share-nodes"></i> Share
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 3: FILMOGRAPHY & CAREER PORTFOLIO GRID -->
+        <section id="portfolio" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+                <div>
+                    <span class="text-xs uppercase tracking-widest text-rosegold/80 font-bold block mb-2">Curated Masterworks</span>
+                    <h2 class="font-playfair text-3xl sm:text-4xl font-bold text-gradient-gold">Filmography & Media Realm</h2>
+                </div>
+
+                <!-- Tab Filters -->
+                <div class="flex flex-wrap gap-2 mt-4 md:mt-0 bg-wood-900/80 p-1.5 rounded-2xl border border-rosegold/20">
+                    <button onclick="filterPortfolio('all')" id="tab-all" class="portfolio-tab px-4 py-2 rounded-xl text-xs font-semibold bg-rosegold text-wood-900 transition">All Projects</button>
+                    <button onclick="filterPortfolio('songs')" id="tab-songs" class="portfolio-tab px-4 py-2 rounded-xl text-xs font-semibold text-rosegold hover:text-goldglow transition">Music Videos</button>
+                    <button onclick="filterPortfolio('tv')" id="tab-tv" class="portfolio-tab px-4 py-2 rounded-xl text-xs font-semibold text-rosegold hover:text-goldglow transition">TV & Serials</button>
+                    <button onclick="filterPortfolio('films')" id="tab-films" class="portfolio-tab px-4 py-2 rounded-xl text-xs font-semibold text-rosegold hover:text-goldglow transition">Films & Web</button>
+                    <button onclick="filterPortfolio('ads')" id="tab-ads" class="portfolio-tab px-4 py-2 rounded-xl text-xs font-semibold text-rosegold hover:text-goldglow transition">Brand Ads</button>
+                </div>
+            </div>
+
+            <!-- Portfolio Grid -->
+            <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Item 1: Music Video -->
+                <div class="portfolio-item songs wood-card rounded-2xl overflow-hidden border border-rosegold/20 group hover:border-rosegold/60 transition duration-300">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80" alt="Kachha Badam Phenomenon" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-wood-900 via-wood-900/40 to-transparent"></div>
+                        <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-wood-900/80 backdrop-blur-md text-goldglow text-[10px] font-bold border border-rosegold/30">
+                            Music Video
+                        </span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-playfair text-xl font-bold text-goldglow mb-1">"Kachha Badam" Global Phenomenon</h3>
+                        <p class="text-xs text-rosegold/70 mb-3">Viral Anthem • 500M+ Global Views</p>
+                        <p class="text-xs text-rosegold-light/80 line-clamp-2 font-light">The iconic track that catapulted Anjali Arora into an unmatched viral sensation across continents.</p>
+                        <button onclick="previewMedia('Kachha Badam', 'The viral dance anthem that conquered global social media with over half a billion views.')" class="mt-4 w-full py-2 rounded-xl bg-wood-800 hover:bg-wood-700 text-rosegold text-xs font-semibold border border-rosegold/20 transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-play text-goldglow"></i> Preview Media Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 2: Music Video -->
+                <div class="portfolio-item songs wood-card rounded-2xl overflow-hidden border border-rosegold/20 group hover:border-rosegold/60 transition duration-300">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80" alt="Sajna" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-wood-900 via-wood-900/40 to-transparent"></div>
+                        <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-wood-900/80 backdrop-blur-md text-goldglow text-[10px] font-bold border border-rosegold/30">
+                            Music Video
+                        </span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-playfair text-xl font-bold text-goldglow mb-1">"Sajna" Romantic Hit</h3>
+                        <p class="text-xs text-rosegold/70 mb-3">Saregama Music • Romantic Lead</p>
+                        <p class="text-xs text-rosegold-light/80 line-clamp-2 font-light">A mesmerizing romantic ballad showcasing Anjali’s classic elegance and soulful screen chemistry.</p>
+                        <button onclick="previewMedia('Sajna', 'Top trending romantic anthem released under Saregama Music featuring Anjali Arora in regal royal attires.')" class="mt-4 w-full py-2 rounded-xl bg-wood-800 hover:bg-wood-700 text-rosegold text-xs font-semibold border border-rosegold/20 transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-play text-goldglow"></i> Preview Media Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 3: TV Serial / Reality -->
+                <div class="portfolio-item tv wood-card rounded-2xl overflow-hidden border border-rosegold/20 group hover:border-rosegold/60 transition duration-300">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&w=600&q=80" alt="Lock Upp Reality Show" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-wood-900 via-wood-900/40 to-transparent"></div>
+                        <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-emeraldrealm text-emerald-300 text-[10px] font-bold border border-emerald-500/30">
+                            TV & Reality
+                        </span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-playfair text-xl font-bold text-goldglow mb-1">"Lock Upp" Season 1</h3>
+                        <p class="text-xs text-rosegold/70 mb-3">ALTBalaji & MX Player • Top Finalist</p>
+                        <p class="text-xs text-rosegold-light/80 line-clamp-2 font-light">Her landmark reality television journey where her pure heart, resilience, and genuine personality won millions.</p>
+                        <button onclick="previewMedia('Lock Upp S1', 'Anjali Arora emerged as one of the most loved finalists, winning audience hearts through authenticity.')" class="mt-4 w-full py-2 rounded-xl bg-wood-800 hover:bg-wood-700 text-rosegold text-xs font-semibold border border-rosegold/20 transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-play text-goldglow"></i> Preview Media Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 4: Song -->
+                <div class="portfolio-item songs wood-card rounded-2xl overflow-hidden border border-rosegold/20 group hover:border-rosegold/60 transition duration-300">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=600&q=80" alt="Dil Se Dil Tak" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-wood-900 via-wood-900/40 to-transparent"></div>
+                        <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-wood-900/80 backdrop-blur-md text-goldglow text-[10px] font-bold border border-rosegold/30">
+                            Music Video
+                        </span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-playfair text-xl font-bold text-goldglow mb-1">"Dil Se Dil Tak"</h3>
+                        <p class="text-xs text-rosegold/70 mb-3">Heartfelt Melody • Lead Actor</p>
+                        <p class="text-xs text-rosegold-light/80 line-clamp-2 font-light">A poignant romantic track highlighting emotional storytelling and poetic cinematic aesthetics.</p>
+                        <button onclick="previewMedia('Dil Se Dil Tak', 'A timeless romantic track performance showcasing her depth as an actress.')" class="mt-4 w-full py-2 rounded-xl bg-wood-800 hover:bg-wood-700 text-rosegold text-xs font-semibold border border-rosegold/20 transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-play text-goldglow"></i> Preview Media Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 5: Film / Web -->
+                <div class="portfolio-item films wood-card rounded-2xl overflow-hidden border border-rosegold/20 group hover:border-rosegold/60 transition duration-300">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=600&q=80" alt="Shri Ramayana Feature Debut" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-wood-900 via-wood-900/40 to-transparent"></div>
+                        <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-amber-900/80 text-amber-200 text-[10px] font-bold border border-amber-500/30">
+                            Film Debut
+                        </span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-playfair text-xl font-bold text-goldglow mb-1">"Shri Ramayana" Mythological Feature</h3>
+                        <p class="text-xs text-rosegold/70 mb-3">Feature Film Debut • Role of Sita</p>
+                        <p class="text-xs text-rosegold-light/80 line-clamp-2 font-light">Stepping into grand epic cinema with divine grace, embodying purity and reverence in mythological storytelling.</p>
+                        <button onclick="previewMedia('Shri Ramayana Feature', 'Her prestigious cinematic step into epic mythological cinema, embodying grace and reverence.')" class="mt-4 w-full py-2 rounded-xl bg-wood-800 hover:bg-wood-700 text-rosegold text-xs font-semibold border border-rosegold/20 transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-play text-goldglow"></i> Preview Media Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 6: Brand Ads -->
+                <div class="portfolio-item ads wood-card rounded-2xl overflow-hidden border border-rosegold/20 group hover:border-rosegold/60 transition duration-300">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80" alt="Luxe Beauty & Fashion Commercials" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-wood-900 via-wood-900/40 to-transparent"></div>
+                        <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-rosegold-dark/80 text-white text-[10px] font-bold border border-rosegold/30">
+                            Commercial Ads
+                        </span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-playfair text-xl font-bold text-goldglow mb-1">Luxury Beauty & Couture Endorsements</h3>
+                        <p class="text-xs text-rosegold/70 mb-3">National TVC & Digital Campaigns</p>
+                        <p class="text-xs text-rosegold-light/80 line-clamp-2 font-light">Leading national fashion, cosmetic, and lifestyle brands celebrating her authentic aura and aesthetic appeal.</p>
+                        <button onclick="previewMedia('Luxury Brand Endorsements', 'High-profile commercial campaigns across television and luxury digital fashion ecosystems.')" class="mt-4 w-full py-2 rounded-xl bg-wood-800 hover:bg-wood-700 text-rosegold text-xs font-semibold border border-rosegold/20 transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-play text-goldglow"></i> Preview Media Details
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 4: PERSONAL FAVORITES & AESTHETIC SPECTRUM -->
+        <section id="spectrum" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="wood-card rounded-3xl p-6 sm:p-10 lg:p-12 border border-rosegold/30 relative">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="text-xs uppercase tracking-widest text-rosegold font-bold block mb-2">Internal Sanctuary</span>
+                    <h2 class="font-playfair text-3xl sm:text-4xl font-bold text-gradient-gold">
+                        "The Purest Heart Spectrum" — Personal Profile Sheet
+                    </h2>
+                    <p class="text-xs sm:text-sm text-rosegold-light/70 mt-2 font-light">
+                        Discover the artistic soul, literary musings, and personal comfort aesthetics of cinema's poetic heart.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <!-- Color -->
+                    <div class="bg-wood-900/60 p-6 rounded-2xl border border-rosegold/15 hover:border-rosegold/40 transition">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-r from-rosegold to-emeraldrealm-light flex items-center justify-center text-wood-900 font-bold mb-4 shadow-md">
+                            <i class="fa-solid fa-palette"></i>
+                        </div>
+                        <h3 class="font-playfair text-lg font-bold text-goldglow mb-1">Favorite Color Aesthetics</h3>
+                        <p class="text-xs text-rosegold font-medium mb-3">Ethereal Rose Gold & Deep Emerald Green</p>
+                        <p class="text-xs text-rosegold-light/70 font-light leading-relaxed">
+                            "Rose gold represents soft, compassionate warmth; deep wood emerald represents eternal grounding and nature's quiet strength."
+                        </p>
+                    </div>
+
+                    <!-- Song -->
+                    <div class="bg-wood-900/60 p-6 rounded-2xl border border-rosegold/15 hover:border-rosegold/40 transition">
+                        <div class="w-10 h-10 rounded-xl bg-wood-800 border border-rosegold/30 flex items-center justify-center text-goldglow font-bold mb-4 shadow-md">
+                            <i class="fa-solid fa-music"></i>
+                        </div>
+                        <h3 class="font-playfair text-lg font-bold text-goldglow mb-1">Favorite Song & Melodies</h3>
+                        <p class="text-xs text-rosegold font-medium mb-3">Classic Punjabi Folk & Soulful Sufi Ballads</p>
+                        <p class="text-xs text-rosegold-light/70 font-light leading-relaxed">
+                            "Songs that carry the smell of earth, spiritual romanticism, and acoustic string rhythms deeply inspire her dance and expressiveness."
+                        </p>
+                    </div>
+
+                    <!-- Movies -->
+                    <div class="bg-wood-900/60 p-6 rounded-2xl border border-rosegold/15 hover:border-rosegold/40 transition">
+                        <div class="w-10 h-10 rounded-xl bg-wood-800 border border-rosegold/30 flex items-center justify-center text-goldglow font-bold mb-4 shadow-md">
+                            <i class="fa-solid fa-clapperboard"></i>
+                        </div>
+                        <h3 class="font-playfair text-lg font-bold text-goldglow mb-1">Favorite Movies</h3>
+                        <p class="text-xs text-rosegold font-medium mb-3">Classic Indian Romance & Poetic Dramas</p>
+                        <p class="text-xs text-rosegold-light/70 font-light leading-relaxed">
+                            "Cinema that honors sacrifice, pure romantic devotion, and strong female resilience remains her perpetual artistic sanctuary."
+                        </p>
+                    </div>
+
+                    <!-- Food -->
+                    <div class="bg-wood-900/60 p-6 rounded-2xl border border-rosegold/15 hover:border-rosegold/40 transition">
+                        <div class="w-10 h-10 rounded-xl bg-wood-800 border border-rosegold/30 flex items-center justify-center text-goldglow font-bold mb-4 shadow-md">
+                            <i class="fa-solid fa-utensils"></i>
+                        </div>
+                        <h3 class="font-playfair text-lg font-bold text-goldglow mb-1">Favorite Culinary Delights</h3>
+                        <p class="text-xs text-rosegold font-medium mb-3">Home-cooked Punjabi Comforts & Organic Teas</p>
+                        <p class="text-xs text-rosegold-light/70 font-light leading-relaxed">
+                            "Simple, soulful home food cooked with love—Sarson ka Saag, warm Parathas, and fragrant cardamom chai."
+                        </p>
+                    </div>
+
+                    <!-- Poets/Writers -->
+                    <div class="bg-wood-900/60 p-6 rounded-2xl border border-rosegold/15 hover:border-rosegold/40 transition">
+                        <div class="w-10 h-10 rounded-xl bg-wood-800 border border-rosegold/30 flex items-center justify-center text-goldglow font-bold mb-4 shadow-md">
+                            <i class="fa-solid fa-pen-nib"></i>
+                        </div>
+                        <h3 class="font-playfair text-lg font-bold text-goldglow mb-1">Favorite Writers & Poets</h3>
+                        <p class="text-xs text-rosegold font-medium mb-3">Amrita Pritam, Shiv Kumar Batalvi & Rumi</p>
+                        <p class="text-xs text-rosegold-light/70 font-light leading-relaxed">
+                            "Poetry that speaks of romantic yearning, spiritual purity, and dignity in emotional vulnerability."
+                        </p>
+                    </div>
+
+                    <!-- Ethos -->
+                    <div class="bg-wood-900/60 p-6 rounded-2xl border border-rosegold/15 hover:border-rosegold/40 transition">
+                        <div class="w-10 h-10 rounded-xl bg-wood-800 border border-rosegold/30 flex items-center justify-center text-goldglow font-bold mb-4 shadow-md">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                        <h3 class="font-playfair text-lg font-bold text-goldglow mb-1">Poetic Duty on Earth</h3>
+                        <p class="text-xs text-rosegold font-medium mb-3">Unconditional Love in Filmy Realm</p>
+                        <p class="text-xs text-rosegold-light/70 font-light leading-relaxed">
+                            "To act not for ego, but to offer comfort to lonely souls. To bring warmth, sweet smiles, and dignity wherever her feet touch."
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: INTERACTIVE DREAM FEED & REALM LIVE STREAM -->
+        <section id="dream-feed" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                
+                <!-- DREAM FEED MESSAGE BOARD (7 COLS) -->
+                <div class="lg:col-span-7 wood-card rounded-3xl p-6 sm:p-8 border border-rosegold/30 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div>
+                                <span class="text-xs uppercase tracking-widest text-rosegold font-bold block">Interactive Community</span>
+                                <h3 class="font-playfair text-2xl sm:text-3xl font-bold text-gradient-gold">Realm Dream Feed</h3>
+                            </div>
+                            <div class="w-10 h-10 rounded-full bg-wood-800 flex items-center justify-center text-goldglow border border-rosegold/30">
+                                <i class="fa-solid fa-comments"></i>
+                            </div>
+                        </div>
+
+                        <!-- Post Input Form -->
+                        <form id="tributeForm" onsubmit="handlePostTribute(event)" class="mb-6 bg-wood-900/70 p-4 rounded-2xl border border-rosegold/20 space-y-3">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <input type="text" id="fanName" required placeholder="Your Name or Fan Tag..." class="w-full bg-wood-800 text-xs text-rosegold-light px-3.5 py-2.5 rounded-xl border border-rosegold/20 focus:outline-none focus:border-rosegold placeholder-rosegold/40">
+                                <input type="text" id="fanLocation" placeholder="City / Country..." class="w-full bg-wood-800 text-xs text-rosegold-light px-3.5 py-2.5 rounded-xl border border-rosegold/20 focus:outline-none focus:border-rosegold placeholder-rosegold/40">
+                            </div>
+                            <textarea id="fanMessage" required rows="2" placeholder="Write a loving tribute or thought for Anjali Arora..." class="w-full bg-wood-800 text-xs text-rosegold-light px-3.5 py-2.5 rounded-xl border border-rosegold/20 focus:outline-none focus:border-rosegold placeholder-rosegold/40 resize-none"></textarea>
+                            <button type="submit" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-rosegold-dark to-wood-600 hover:from-rosegold hover:to-wood-500 text-wood-900 font-bold text-xs uppercase tracking-wider transition shadow-md flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-paper-plane"></i> Publish Tribute to Dream Feed
+                            </button>
+                        </form>
+
+                        <!-- Feed Items Container -->
+                        <div id="dreamFeedList" class="space-y-4 max-h-[420px] overflow-y-auto pr-2">
+                            <!-- Dynamic items inserted via JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FILMY LIVE STREAM WIDGET (5 COLS) -->
+                <div id="live-haven" class="lg:col-span-5 wood-card rounded-3xl p-6 sm:p-8 border border-rosegold/30 flex flex-col justify-between relative overflow-hidden">
+                    <div>
+                        <!-- Live Header -->
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-3 h-3 rounded-full bg-red-500 animate-pulse"></span>
+                                <span class="font-playfair text-xl font-bold text-gradient-gold">Filmy Live - Haven Stream</span>
+                            </div>
+                            <span class="text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-full bg-red-900/60 text-red-200 border border-red-500/30">
+                                Live Simulation
+                            </span>
+                        </div>
+
+                        <!-- Live Video Simulator Frame -->
+                        <div class="relative h-56 rounded-2xl overflow-hidden wood-border-gold mb-4 group">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" alt="Anjali Arora Live" class="w-full h-full object-cover filter brightness-90 group-hover:scale-105 transition duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-wood-900 via-transparent to-transparent opacity-80"></div>
+                            
+                            <div class="absolute top-3 left-3 bg-wood-900/80 backdrop-blur-md px-3 py-1 rounded-full border border-rosegold/30 text-[11px] text-goldglow font-medium flex items-center gap-1.5">
+                                <i class="fa-solid fa-eye text-red-400"></i>
+                                <span id="liveViewerCount">48,920</span> Watching Live
+                            </div>
+
+                            <div class="absolute bottom-3 left-3 right-3 text-xs text-rosegold-light">
+                                <span class="font-bold text-goldglow">Anjali Arora:</span> "Sending warm hugs and cosmic blessings to all of you from our wood sanctuary... 🌸✨"
+                            </div>
+                        </div>
+
+                        <!-- Chat Simulation Stream -->
+                        <div id="liveChatStream" class="h-44 overflow-y-auto space-y-2 text-xs bg-wood-900/80 p-3 rounded-xl border border-rosegold/10 mb-4">
+                            <!-- Live comments injected via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Virtual Gift Trigger Controls -->
+                    <div class="pt-2 border-t border-rosegold/20 flex items-center justify-between gap-2">
+                        <button onclick="sendVirtualGift('🌹 Royal Rose')" class="flex-1 py-2 rounded-xl bg-wood-800 hover:bg-wood-700 text-rosegold text-xs font-semibold border border-rosegold/30 transition flex items-center justify-center gap-1">
+                            <span>🌹 Send Rose</span>
+                        </button>
+                        <button onclick="sendVirtualGift('✨ Golden Sparkle')" class="flex-1 py-2 rounded-xl bg-wood-800 hover:bg-wood-700 text-goldglow text-xs font-semibold border border-rosegold/30 transition flex items-center justify-center gap-1">
+                            <span>✨ Sparkle</span>
+                        </button>
+                        <button onclick="sendVirtualGift('👑 Haven Crown')" class="flex-1 py-2 rounded-xl bg-wood-800 hover:bg-wood-700 text-amber-300 text-xs font-semibold border border-rosegold/30 transition flex items-center justify-center gap-1">
+                            <span>👑 Crown</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 6: EXECUTIVE FOUNDER HUB -->
+        <section class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="wood-card rounded-3xl p-6 sm:p-8 border border-rosegold/20">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 rounded-2xl bg-wood-800 border-2 border-rosegold flex items-center justify-center text-rosegold text-2xl font-playfair font-bold shadow-lg">
+                            AA
+                        </div>
+                        <div>
+                            <span class="text-[10px] uppercase tracking-widest text-rosegold/70 block">Executive Producer & Curation Hub</span>
+                            <h3 class="font-playfair text-xl sm:text-2xl font-bold text-gradient-gold">Amim Ahsan Archive Curation</h3>
+                            <p class="text-xs text-rosegold-light/70 font-light mt-0.5">Verified Sovereign Archive • Protocol 2026-ACTIVE</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-4 text-xs">
+                        <div class="bg-wood-900/80 px-4 py-2.5 rounded-xl border border-rosegold/20 text-center">
+                            <span class="text-rosegold/60 block text-[10px]">VERIFIED CREATOR ID</span>
+                            <span class="font-mono text-goldglow font-bold">FOUNDER-AMIM-AHSAN</span>
+                        </div>
+                        <div class="bg-wood-900/80 px-4 py-2.5 rounded-xl border border-rosegold/20 text-center">
+                            <span class="text-rosegold/60 block text-[10px]">ARCHIVE STATUS</span>
+                            <span class="text-emerald-400 font-bold flex items-center gap-1 justify-center">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span> Live & Protected
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="border-t border-rosegold/20 bg-wood-900/90 py-10 px-4 text-center text-xs text-rosegold/60">
+            <div class="max-w-7xl mx-auto space-y-4">
+                <p class="font-playfair text-lg text-gradient-gold font-bold">Anjali Arora Archive - Realm Dream Feed & Haven on Earth</p>
+                <p class="max-w-2xl mx-auto font-light text-rosegold-light/70 leading-relaxed">
+                    Designed with deep rich mahogany aesthetics, pure rose gold light, and eternal foliage. Celebrating the finest, purest heart of Indian cinema.
+                </p>
+                <div class="pt-4 text-[11px] text-rosegold/40">
+                    &copy; 2026 Executive Curation by Amim Ahsan. All Rights Reserved. Single Profile Sanctuary.
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- MODAL 1: LIGHTBOX MODAL -->
+    <div id="lightboxModal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="relative max-w-4xl w-full max-h-[90vh] flex flex-col items-center">
+            <button onclick="closeModal('lightboxModal')" class="absolute -top-12 right-0 text-white text-2xl hover:text-rosegold transition">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="wood-border-gold p-2 rounded-2xl max-h-[80vh] overflow-hidden">
+                <img id="lightboxImg" src="" alt="Enlarged view" class="max-h-[75vh] w-auto object-contain rounded-xl">
+            </div>
+            <p id="lightboxCaption" class="mt-4 font-playfair text-lg text-goldglow italic text-center"></p>
+        </div>
+    </div>
+
+    <!-- MODAL 2: SOURCE CODE & DOWNLOAD TOOL -->
+    <div id="codeModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="wood-card rounded-3xl max-w-3xl w-full p-6 sm:p-8 border border-rosegold/40 shadow-2xl relative max-h-[85vh] flex flex-col">
+            <button onclick="closeModal('codeModal')" class="absolute top-5 right-5 text-rosegold hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <h3 class="font-playfair text-2xl font-bold text-gradient-gold mb-2">
+                <i class="fa-solid fa-code text-rosegold mr-2"></i> Archive Source Code & Downloader
+            </h3>
+            <p class="text-xs text-rosegold-light/70 mb-4">
+                Inspect or download the complete, standalone <code class="text-goldglow">anjali_arora_archive.html</code> file in one click.
+            </p>
+
+            <div class="flex-1 overflow-hidden rounded-xl bg-wood-900 p-4 border border-rosegold/20 font-mono text-xs text-emerald-300 overflow-y-auto mb-4">
+                <pre id="codePreviewText">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Anjali Arora Archive - Realm Dream Feed & Haven on Earth&lt;/title&gt;
+    &lt;!-- Complete single file self-contained interactive web application --&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    ... Complete code loaded into page ...
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+            </div>
+
+            <div class="flex items-center justify-between pt-2">
+                <button onclick="copyToClipboard()" class="px-4 py-2 rounded-xl bg-wood-800 hover:bg-wood-700 text-xs text-rosegold border border-rosegold/30 transition flex items-center gap-2">
+                    <i class="fa-solid fa-copy"></i> Copy Raw Code
+                </button>
+                <button onclick="downloadHTMLFile()" class="px-5 py-2 rounded-xl bg-rosegold hover:bg-rosegold-light text-wood-900 font-bold text-xs uppercase tracking-wider transition flex items-center gap-2">
+                    <i class="fa-solid fa-download"></i> 1-Click HTML Download
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 3: POKE MODAL -->
+    <div id="pokeModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="wood-card rounded-3xl max-w-md w-full p-6 border border-rosegold/40 shadow-2xl relative text-center">
+            <button onclick="closeModal('pokeModal')" class="absolute top-4 right-4 text-rosegold text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="w-16 h-16 rounded-full bg-rosegold/20 border border-rosegold flex items-center justify-center text-rosegold text-2xl mx-auto mb-4 animate-bounce">
+                <i class="fa-solid fa-hand-sparkles"></i>
+            </div>
+            <h3 class="font-playfair text-2xl font-bold text-gradient-gold mb-2">Send Tribute Poke</h3>
+            <p class="text-xs text-rosegold-light/80 mb-6">
+                Send a soft golden shimmer reaction directly to Anjali Arora's digital sanctuary stream.
+            </p>
+            <button onclick="triggerPokeAction()" class="w-full py-3 rounded-xl bg-gradient-to-r from-rosegold to-wood-600 text-wood-900 font-bold text-xs uppercase tracking-wider shadow-lg">
+                ✨ Send Golden Shimmer Poke
+            </button>
+        </div>
+    </div>
+
+    <!-- MODAL 4: PRIVATE MESSAGE MODAL -->
+    <div id="msgModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="wood-card rounded-3xl max-w-md w-full p-6 border border-rosegold/40 shadow-2xl relative">
+            <button onclick="closeModal('msgModal')" class="absolute top-4 right-4 text-rosegold text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="font-playfair text-2xl font-bold text-gradient-gold mb-2">Private Sanctuary Note</h3>
+            <p class="text-xs text-rosegold-light/70 mb-4">Your message will be encrypted into her fan tribute vault.</p>
+            <form onsubmit="handlePrivateMsg(event)" class="space-y-3">
+                <input type="text" required placeholder="Your Full Name..." class="w-full bg-wood-900 text-xs text-rosegold-light px-3.5 py-2.5 rounded-xl border border-rosegold/20 focus:outline-none focus:border-rosegold">
+                <input type="email" required placeholder="Your Contact Email..." class="w-full bg-wood-900 text-xs text-rosegold-light px-3.5 py-2.5 rounded-xl border border-rosegold/20 focus:outline-none focus:border-rosegold">
+                <textarea required rows="3" placeholder="Write your heartfelt message..." class="w-full bg-wood-900 text-xs text-rosegold-light px-3.5 py-2.5 rounded-xl border border-rosegold/20 focus:outline-none focus:border-rosegold resize-none"></textarea>
+                <button type="submit" class="w-full py-2.5 rounded-xl bg-rosegold text-wood-900 font-bold text-xs uppercase tracking-wider">
+                    Send Private Note
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- GENERAL MESSAGE TOAST / ALERT BOX -->
+    <div id="toastBox" class="fixed bottom-5 right-5 z-50 hidden bg-wood-800 text-goldglow px-5 py-3 rounded-2xl border border-rosegold/40 shadow-2xl text-xs font-medium flex items-center gap-3">
+        <i class="fa-solid fa-circle-check text-emerald-400 text-base"></i>
+        <span id="toastMsg">Action executed successfully.</span>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        /* -------------------------------------------------------------
+           1. PARTICLES CANVAS SYSTEM (Golden Dust & Rose Petals)
+        ------------------------------------------------------------- */
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height + canvas.height;
+                this.size = Math.random() * 3 + 1;
+                this.speedY = Math.random() * 0.8 + 0.3;
+                this.speedX = Math.random() * 0.4 - 0.2;
+                this.opacity = Math.random() * 0.5 + 0.2;
+                this.color = Math.random() > 0.4 ? '#e0a996' : '#f3e1a0'; // Rose gold or Gold glow
+            }
+            update() {
+                this.y -= this.speedY;
+                this.x += this.speedX;
+                if (this.y < -10) this.reset();
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.globalAlpha = this.opacity;
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            const count = Math.floor((canvas.width * canvas.height) / 25000);
+            for (let i = 0; i < count; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+
+        /* -------------------------------------------------------------
+           2. REACTION BADGE COUNTERS
+        ------------------------------------------------------------- */
+        const badgeCounts = {
+            glow: 1420,
+            lotus: 2890,
+            aura: 950,
+            goddess: 3110
+        };
+
+        function incrementBadge(key) {
+            badgeCounts[key]++;
+            const el = document.getElementById(`badge-${key}`);
+            if (el) el.innerText = badgeCounts[key].toLocaleString();
+            showToast(`Reaction updated! Thank you for honoring Anjali Arora.`);
+        }
+
+        /* -------------------------------------------------------------
+           3. PORTFOLIO FILTERING SYSTEM
+        ------------------------------------------------------------- */
+        function filterPortfolio(category) {
+            const tabs = document.querySelectorAll('.portfolio-tab');
+            tabs.forEach(t => {
+                t.classList.remove('bg-rosegold', 'text-wood-900');
+                t.classList.add('text-rosegold');
+            });
+
+            const activeTab = document.getElementById(`tab-${category}`);
+            if (activeTab) {
+                activeTab.classList.add('bg-rosegold', 'text-wood-900');
+            }
+
+            const items = document.querySelectorAll('.portfolio-item');
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        function previewMedia(title, desc) {
+            showToast(`Previewing "${title}": ${desc}`);
+        }
+
+        /* -------------------------------------------------------------
+           4. DREAM FEED PERSISTENCE (LocalStorage)
+        ------------------------------------------------------------- */
+        const defaultFeed = [
+            { name: 'Kavya Sharma', location: 'Mumbai', msg: 'Anjali Arora is truly the purest soul in cinema. Her smile dissolves all worries!', date: 'Just now' },
+            { name: 'Aarav Malhotra', location: 'Delhi', msg: 'The way she handled all industry claims with poise proves she is a true screen goddess.', date: '2 hours ago' },
+            { name: 'Simran Kaur', location: 'Chandigarh', msg: 'Loved her in Lock Upp! Absolute mom of industry with her caring nature.', date: '5 hours ago' }
+        ];
+
+        function loadDreamFeed() {
+            const saved = localStorage.getItem('anjali_dream_feed');
+            const feed = saved ? JSON.parse(saved) : defaultFeed;
+            const container = document.getElementById('dreamFeedList');
+            container.innerHTML = '';
+
+            feed.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'bg-wood-900/60 p-4 rounded-2xl border border-rosegold/15 hover:border-rosegold/30 transition';
+                card.innerHTML = `
+                    <div class="flex items-center justify-between mb-1.5">
+                        <span class="font-playfair font-bold text-sm text-goldglow">${escapeHtml(item.name)} <span class="text-[10px] text-rosegold/60 font-sans font-normal">• ${escapeHtml(item.location || 'Sanctuary')}</span></span>
+                        <span class="text-[10px] text-rosegold/50">${escapeHtml(item.date)}</span>
+                    </div>
+                    <p class="text-xs text-rosegold-light/80 font-light leading-relaxed">"${escapeHtml(item.msg)}"</p>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function handlePostTribute(e) {
+            e.preventDefault();
+            const name = document.getElementById('fanName').value.trim();
+            const location = document.getElementById('fanLocation').value.trim();
+            const msg = document.getElementById('fanMessage').value.trim();
+
+            if (!name || !msg) return;
+
+            const saved = localStorage.getItem('anjali_dream_feed');
+            const feed = saved ? JSON.parse(saved) : defaultFeed;
+
+            feed.unshift({ name, location, msg, date: 'Just now' });
+            localStorage.setItem('anjali_dream_feed', JSON.stringify(feed));
+
+            document.getElementById('tributeForm').reset();
+            loadDreamFeed();
+            showToast('Your tribute has been published to the Realm Dream Feed!');
+        }
+
+        function escapeHtml(text) {
+            return text.replace(/[&<"']/g, function(m) {
+                return { '&': '&amp;', '<': '&lt;', '"': '&quot;', "'": '&#039;' }[m];
+            });
+        }
+
+        /* -------------------------------------------------------------
+           5. FILMY LIVE STREAM SIMULATOR & GIFTING
+        ------------------------------------------------------------- */
+        const liveComments = [
+            { user: "Rohan_FilmFan", comment: "Queen Anjali! Looking so stunning! 🌸" },
+            { user: "Priya_Delhi", comment: "Pure heart goddess! We love you so much!" },
+            { user: "Aman_Cinema", comment: "Waiting for your next big movie debut! 👑" },
+            { user: "Sneha_Arts", comment: "Sending virtual roses from Kolkata! 🌹" }
+        ];
+
+        function initLiveChat() {
+            const chatBox = document.getElementById('liveChatStream');
+            if (!chatBox) return;
+
+            liveComments.forEach(c => {
+                appendLiveComment(c.user, c.comment);
+            });
+
+            // Simulate incoming live comments dynamically
+            setInterval(() => {
+                const users = ["Riya", "Vikas_Star", "Sonia_Realm", "Deepak_PB", "Simi_PureHeart"];
+                const msgs = [
+                    "Sovereign Haven Queen forever! ✨",
+                    "Purest smile in Bollywood! 💖",
+                    "Loved the note on Working Duty! 📜",
+                    "Greetings from Punjab! 🌾"
+                ];
+                const randUser = users[Math.floor(Math.random() * users.length)];
+                const randMsg = msgs[Math.floor(Math.random() * msgs.length)];
+                appendLiveComment(randUser, randMsg);
+            }, 4500);
+
+            // Fluctuate viewer count slightly
+            setInterval(() => {
+                const el = document.getElementById('liveViewerCount');
+                if (el) {
+                    const current = parseInt(el.innerText.replace(',', ''));
+                    const delta = Math.floor(Math.random() * 40) - 18;
+                    el.innerText = (current + delta).toLocaleString();
+                }
+            }, 3000);
+        }
+
+        function appendLiveComment(user, comment) {
+            const chatBox = document.getElementById('liveChatStream');
+            if (!chatBox) return;
+
+            const row = document.createElement('div');
+            row.className = 'text-xs text-rosegold-light/90';
+            row.innerHTML = `<span class="font-bold text-goldglow">${escapeHtml(user)}:</span> ${escapeHtml(comment)}`;
+            chatBox.appendChild(row);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function sendVirtualGift(giftName) {
+            appendLiveComment("You", `Sent virtual gift: ${giftName}! ✨`);
+            showToast(`Virtual gift "${giftName}" sent to Anjali Arora!`);
+        }
+
+        /* -------------------------------------------------------------
+           6. MODALS & UTILITY FUNCTIONS
+        ------------------------------------------------------------- */
+        function openModal(id) {
+            const m = document.getElementById(id);
+            if (m) m.classList.remove('hidden');
+        }
+
+        function closeModal(id) {
+            const m = document.getElementById(id);
+            if (m) m.classList.add('hidden');
+        }
+
+        function openLightbox(imgUrl, caption) {
+            document.getElementById('lightboxImg').src = imgUrl;
+            document.getElementById('lightboxCaption').innerText = caption;
+            openModal('lightboxModal');
+        }
+
+        function triggerPokeAction() {
+            closeModal('pokeModal');
+            showToast("✨ Shimmer Poke sent to Anjali's sanctuary!");
+        }
+
+        function handlePrivateMsg(e) {
+            e.preventDefault();
+            closeModal('msgModal');
+            showToast("Your private note has been encrypted and saved.");
+        }
+
+        function shareNote(title) {
+            // Standard fallback copy technique
+            const dummy = document.createElement('input');
+            document.body.appendChild(dummy);
+            dummy.value = `Anjali Arora Executive Note - "${title}": Read on Anjali Arora Archive.`;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+            showToast(`Excerpt for "${title}" copied to clipboard!`);
+        }
+
+        function showToast(msg) {
+            const t = document.getElementById('toastBox');
+            const tm = document.getElementById('toastMsg');
+            tm.innerText = msg;
+            t.classList.remove('hidden');
+            setTimeout(() => {
+                t.classList.add('hidden');
+            }, 3000);
+        }
+
+        /* -------------------------------------------------------------
+           7. CODE VIEWER & 1-CLICK HTML DOWNLOAD TOOL
+        ------------------------------------------------------------- */
+        function copyToClipboard() {
+            const fullHTML = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+            const dummy = document.createElement('textarea');
+            document.body.appendChild(dummy);
+            dummy.value = fullHTML;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+            showToast("Complete HTML source code copied to clipboard!");
+        }
+
+        function downloadHTMLFile() {
+            const fullHTML = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+            const blob = new Blob([fullHTML], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'anjali_arora_archive.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showToast("Downloaded anjali_arora_archive.html successfully!");
+        }
+
+        /* -------------------------------------------------------------
+           8. INIT ON WINDOW LOAD
+        ------------------------------------------------------------- */
+        window.onload = function() {
+            initParticles();
+            animateParticles();
+            loadDreamFeed();
+            initLiveChat();
+        };
+    </script>
+</body>
+</html>
